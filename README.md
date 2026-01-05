@@ -11,7 +11,7 @@ A role-based PG Management System built using Django.
 ![Admin Dashboard](screenshots/admin.png)
 
 ### Owner Dashboard
-![Owner Dashboard](screenshots/pg owner.png)
+![Owner Dashboard](screenshots/owner.png)
 
 ### Customer Search
 ![Customer Search](screenshots/customer.png)
