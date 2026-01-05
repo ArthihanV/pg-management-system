@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block sidebar %}
-<li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+<li><a href="{% url 'dashboard' %}"><i class="fa-solid fa-chart-line"></i>Dashboard</a></li>
 <li><a href="{% url 'customer_pg_list' %}">Search PG</a></li>
 <li><a href="{% url 'customer_bookings' %}"><i class="fa-solid fa-calendar-check"></i>My Bookings</a></li>
 {% endblock %}
