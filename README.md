@@ -15,7 +15,7 @@ A role-based PG Management System built using Django.
 
 ### Customer Search
 ![Customer Search](screenshots/customer.png)
-![Booking list] (screenshots/customer1.png)
+![BookingList](screenshots/customer1.png)
 
 
 ## Features
