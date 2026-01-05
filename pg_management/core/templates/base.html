@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2 class="logo">PG System</h2>
+
+        <ul class="menu">
+            {% block sidebar %}
+            <!-- Role-based links go here -->
+            {% endblock %}
+        </ul>
+
+        <div class="logout">
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+</div>
+
+</body>
+</html>

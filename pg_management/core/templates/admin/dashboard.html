@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block sidebar %}
+<li><a href="{% url 'dashboard' %}"><i class="fa-solid fa-chart-line"></i>Dashboard</a></li>
+<li><a href="{% url 'approve_pg_owners' %}">Approve Owners</a></li>
+<li><a href="{% url 'admin_users' %}">Users</a></li>
+<li><a href="{% url 'admin_bookings' %}"><i class="fa-solid fa-calendar-check"></i>Bookings</a></li>
+{% endblock %}
+
+{% block content %}
+<h1>Admin Dashboard</h1>
+
+<div class="cards">
+    <div class="card">
+        <h3>Total Users</h3>
+        <p>{{ total_users }}</p>
+    </div>
+
+    <div class="card">
+        <h3>PG Owners</h3>
+        <p>{{ total_owners }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Pending Approvals</h3>
+        <p>{{ pending_owners }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Customers</h3>
+        <p>{{ total_customers }}</p>
+    </div>
+</div>
+{% endblock %}

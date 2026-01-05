@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+<li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+<li><a href="{% url 'customer_pg_list' %}">Search PG</a></li>
+<li><a href="{% url 'customer_bookings' %}"><i class="fa-solid fa-calendar-check"></i>My Bookings</a></li>
+{% endblock %}
+
+{% block title %}Book Room{% endblock %}
+
+{% block content %}
+<h2>Book Room</h2>
+
+<p><strong>Room:</strong> {{ room.room_type }}</p>
+<p><strong>Price:</strong> ₹ {{ room.price }}</p>
+
+<form method="post" class="pg-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn primary">Confirm Booking</button>
+</form>
+{% endblock %}

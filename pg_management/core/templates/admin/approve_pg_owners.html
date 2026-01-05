@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+<li><a href="{% url 'dashboard' %}"><i class="fa-solid fa-chart-line"></i>Dashboard</a></li>
+<li><a href="{% url 'approve_pg_owners' %}">Approve Owners</a></li>
+<li><a href="{% url 'admin_users' %}">Users</a></li>
+<li><a href="{% url 'admin_bookings' %}"><i class="fa-solid fa-calendar-check"></i>Bookings</a></li>
+{% endblock %}
+
+{% block title %}Approve PG Owners{% endblock %}
+
+{% block content %}
+<h2>Pending PG Owner Approvals</h2>
+
+{% if pending_owners %}
+<table class="table">
+    <tr>
+        <th>Username</th>
+        <th>Action</th>
+    </tr>
+
+    {% for owner in pending_owners %}
+    <tr>
+        <td>{{ owner.username }}</td>
+        <td>
+            <a href="{% url 'approve_pg_owner' owner.id %}" class="btn">Approve</a>
+            <a href="{% url 'reject_pg_owner' owner.id %}" class="btn danger">Reject</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No pending PG Owner approvals 🎉</p>
+{% endif %}
+{% endblock %}

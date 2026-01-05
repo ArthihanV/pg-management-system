@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+<li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+<li><a href="{% url 'customer_pg_list' %}">Search PG</a></li>
+<li><a href="{% url 'customer_bookings' %}"><i class="fa-solid fa-calendar-check"></i>My Bookings</a></li>
+{% endblock %}
+
+{% block title %}My Bookings{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>My Bookings</h2>
+    <p>View and manage your PG bookings</p>
+</div>
+
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>PG Name</th>
+                <th>Room Type</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Booked On</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for b in bookings %}
+            <tr>
+                <td>{{ b.room.pg.name }}</td>
+                <td>{{ b.room.room_type }}</td>
+                <td>₹ {{ b.room.price }}</td>
+
+                <td>
+                    {% if b.status == 'PENDING' %}
+                        <span class="badge pending">Pending</span>
+                    {% elif b.status == 'APPROVED' %}
+                        <span class="badge approved">Approved</span>
+                    {% else %}
+                        <span class="badge rejected">Rejected</span>
+                    {% endif %}
+                </td>
+
+                <td>{{ b.created_at|date:"d-m-Y" }}</td>
+
+                <td>
+                    {% if b.status != 'REJECTED' %}
+                    <form method="post" action="{% url 'cancel_booking' b.id %}">
+                        {% csrf_token %}
+                        <button
+                            type="submit"
+                            class="btn small danger"
+                            onclick="return confirm('Are you sure you want to cancel this booking?')"
+                        >
+                            Cancel
+                        </button>
+                    </form>
+                    {% else %}
+                        —
+                    {% endif %}
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="6" style="text-align:center;">
+                    No bookings found.
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

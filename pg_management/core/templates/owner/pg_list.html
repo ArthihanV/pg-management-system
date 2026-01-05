@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+<li><a href="{% url 'dashboard' %}"><i class="fa-solid fa-chart-line"></i>Dashboard</a></li>
+<li><a href="{% url 'add_pg' %}"><i class="fa-solid fa-plus"></i>Add PG</a></li>
+<li><a href="{% url 'owner_customers' %}">My Customers</a></li>
+<li><a href="{% url 'owner_pg_list' %}"><i class="fa-solid fa-building"></i>Manage PG</a></li>
+<li><a href="{% url 'owner_bookings' %}"><i class="fa-solid fa-calendar-check"></i>Booking Requests</a></li>
+<li><a href="{% url 'owner_booking_history' %}">Booking History</a></li>
+{% endblock %}
+
+
+{% block title %}My PGs{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>My PGs</h2>
+    <p>All PGs added by you</p>
+</div>
+
+<div class="pg-grid">
+    {% for pg in pgs %}
+    <div class="pg-card">
+
+        {% if pg.image %}
+        <img src="{{ pg.image.url }}" alt="{{ pg.name }}">
+        {% else %}
+        <div class="no-img">No Image</div>
+        {% endif %}
+
+        <div class="pg-body">
+            <h3>{{ pg.name }}</h3>
+            <p class="location">{{ pg.location }}</p>
+
+            <div class="pg-info">
+                <span>₹ {{ pg.price }}/month</span>
+                <span>{{ pg.gender_type }}</span>
+            </div>
+
+            <div class="pg-actions">
+                <a href="{% url 'edit_pg' pg.id %}" class="btn small">Edit</a>
+                <a href="{% url 'owner_pg_rooms' pg.id %}" class="btn small">Rooms</a>
+                <form method="post" action="{% url 'delete_pg' pg.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn small danger">Delete</button>
+                </form>
+                
+
+            </div>
+
+        </div>
+    </div>
+    {% empty %}
+    <p>No PGs added yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}User Management{% endblock %}
+
+{% block sidebar %}
+<li><a href="{% url 'dashboard' %}"><i class="fa-solid fa-chart-line"></i>Dashboard</a></li>
+<li><a href="{% url 'approve_pg_owners' %}">Approve Owners</a></li>
+<li><a href="{% url 'admin_users' %}">Users</a></li>
+<li><a href="{% url 'admin_bookings' %}"><i class="fa-solid fa-calendar-check"></i>Bookings</a></li>
+{% endblock %}
+
+{% block content %}
+<h2>User Management</h2>
+
+<form method="get" class="filter-bar">
+    <select name="role">
+        <option value="">All Roles</option>
+        <option value="ADMIN" {% if role == 'ADMIN' %}selected{% endif %}>Admin</option>
+        <option value="PG_OWNER" {% if role == 'PG_OWNER' %}selected{% endif %}>Owner</option>
+        <option value="CUSTOMER" {% if role == 'CUSTOMER' %}selected{% endif %}>Customer</option>
+    </select>
+    <button type="submit" class="btn primary">Filter</button>
+</form>
+
+<table class="table">
+    <tr>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Approved</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for u in users %}
+    <tr>
+        <td>{{ u.username }}</td>
+        <td>{{ u.role }}</td>
+
+        <td>
+            {% if u.is_approved %}
+                <span class="badge approved">Yes</span>
+            {% else %}
+                <span class="badge pending">No</span>
+            {% endif %}
+        </td>
+
+        <td>
+            {% if u.is_active %}
+                <span class="badge approved">Active</span>
+            {% else %}
+                <span class="badge rejected">Disabled</span>
+            {% endif %}
+        </td>
+
+        <td>
+            {% if u.role != 'ADMIN' %}
+            <form method="post" action="{% url 'admin_delete_user' u.id %}">
+                {% csrf_token %}
+                <button
+                    type="submit"
+                    class="btn small danger"
+                    onclick="return confirm('Are you sure you want to remove this user?')"
+                >
+                    Remove
+                </button>
+            </form>
+            {% else %}
+                —
+            {% endif %}
+        </td>
+    </tr>
+
+    {% endfor %}
+</table>
+{% endblock %}

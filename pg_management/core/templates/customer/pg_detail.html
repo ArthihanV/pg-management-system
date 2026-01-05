@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+<li><a href="{% url 'dashboard' %}"><i class="fa-solid fa-chart-line"></i>Dashboard</a></li>
+<li><a href="{% url 'customer_pg_list' %}">Search PG</a></li>
+<li><a href="{% url 'customer_bookings' %}"><i class="fa-solid fa-calendar-check"></i>My Bookings</a></li>
+{% endblock %}
+
+{% block title %}{{ pg.name }}{% endblock %}
+
+{% block content %}
+<div class="pg-detail">
+
+    <div class="pg-detail-image">
+        {% if pg.image %}
+        <img src="{{ pg.image.url }}" alt="{{ pg.name }}">
+        {% else %}
+        <div class="no-img">No Image</div>
+        {% endif %}
+    </div>
+
+    <div class="pg-detail-info">
+        <h2>{{ pg.name }}</h2>
+        <p class="location">{{ pg.location }}</p>
+
+        <div class="detail-row">
+            <strong>Price:</strong> ₹ {{ pg.price }} / month
+        </div>
+
+        <div class="detail-row">
+            <strong>Gender:</strong> {{ pg.gender_type }}
+        </div>
+
+        <div class="detail-row">
+            <strong>Total Rooms:</strong> {{ pg.total_rooms }}
+        </div><br>
+        <a href="#" class="btn primary">Book Now</a>
+    </div>
+
+</div>
+
+<h3>Available Rooms</h3>
+
+{% for room in rooms %}
+<div class="room-card">
+    <p><strong>Type:</strong> {{ room.room_type }}</p>
+    <p><strong>Price:</strong> ₹ {{ room.price }}</p>
+    <p><strong>Available:</strong> {{ room.available_rooms }}</p>
+
+    <a href="{% url 'book_room' room.id %}" class="btn primary small">
+        Book Now
+    </a>
+</div>
+{% empty %}
+<p>No rooms available.</p>
+{% endfor %}
+
+{% endblock %}

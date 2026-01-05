@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Customer Dashboard{% endblock %}
+
+{% block sidebar %}
+<li><a href="{% url 'dashboard' %}"><i class="fa-solid fa-chart-line"></i>Dashboard</a></li>
+<li><a href="{% url 'customer_pg_list' %}" class="active">Search PG</a></li>
+<li><a href="{% url 'customer_bookings' %}"><i class="fa-solid fa-calendar-check"></i>My Bookings</a></li>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Find Your PG</h2>
+    <p>Search and book the best PGs</p>
+</div> 
+
+<!-- QUICK SEARCH -->
+<div style="margin-top:30px;">
+    <a href="{% url 'customer_pg_list' %}" class="btn primary">
+        🔍 Search PG Now
+    </a>
+</div><br>
+
+<!-- DASHBOARD CARDS -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>{{ total_pgs }}</h3>
+        <p>Available PGs</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>{{ my_bookings }}</h3>
+        <p>My Bookings</p>
+    </div>
+
+    <div class="stat-card success">
+        <h3>{{ approved }}</h3>
+        <p>Approved Bookings</p>
+    </div>
+</div>
+
+
+{% endblock %}

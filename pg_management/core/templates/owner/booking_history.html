@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Booking History{% endblock %}
+
+{% block sidebar %}
+<li><a href="{% url 'dashboard' %}"><i class="fa-solid fa-chart-line"></i>Dashboard</a></li>
+<li><a href="{% url 'add_pg' %}"><i class="fa-solid fa-plus"></i>Add PG</a></li>
+<li><a href="{% url 'owner_customers' %}">My Customers</a></li>
+<li><a href="{% url 'owner_pg_list' %}"><i class="fa-solid fa-building"></i>Manage PG</a></li>
+<li><a href="{% url 'owner_bookings' %}"><i class="fa-solid fa-calendar-check"></i>Booking Requests</a></li>
+<li><a href="{% url 'owner_booking_history' %}" class="active">Booking History</a></li>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Booking History</h2>
+    <p>Total Income: <strong>₹ {{ income }}</strong></p>
+</div>
+
+<table class="table">
+    <tr>
+        <th>Customer</th>
+        <th>PG</th>
+        <th>Room</th>
+        <th>Status</th>
+        <th>Date</th>
+    </tr>
+
+    {% for b in bookings %}
+    <tr>
+        <td>{{ b.customer.username }}</td>
+        <td>{{ b.room.pg.name }}</td>
+        <td>{{ b.room.room_type }}</td>
+        <td>
+            {% if b.status == 'APPROVED' %}
+                <span class="badge approved">Approved</span>
+            {% elif b.status == 'PENDING' %}
+                <span class="badge pending">Pending</span>
+            {% else %}
+                <span class="badge rejected">Rejected</span>
+            {% endif %}
+        </td>
+        <td>{{ b.created_at|date:"d-m-Y" }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">No bookings yet</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

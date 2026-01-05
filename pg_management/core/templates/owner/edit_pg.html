@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+<li><a href="{% url 'dashboard' %}"><i class="fa-solid fa-chart-line"></i>Dashboard</a></li>
+<li><a href="{% url 'add_pg' %}"><i class="fa-solid fa-plus"></i>Add PG</a></li>
+<li><a href="{% url 'owner_customers' %}">My Customers</a></li>
+<li><a href="{% url 'owner_pg_list' %}"><i class="fa-solid fa-building">Manage PG</a></li>
+<li><a href="{% url 'owner_bookings' %}"><i class="fa-solid fa-calendar-check"></i>Booking Requests</a></li>
+<li><a href="{% url 'owner_booking_history' %}">Booking History</a></li>
+{% endblock %}
+
+
+{% block title %}Edit PG{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Edit PG</h2>
+    <p>Update your PG details</p>
+</div>
+
+<div class="form-container">
+    <form method="post" enctype="multipart/form-data" class="pg-form">
+        {% csrf_token %}
+
+        <div class="form-row">
+            <label>PG Name</label>
+            {{ form.name }}
+        </div>
+
+        <div class="form-row">
+            <label>Location</label>
+            {{ form.location }}
+        </div>
+
+        <div class="form-row">
+            <label>Monthly Price</label>
+            {{ form.price }}
+        </div>
+
+        <div class="form-row">
+            <label>Total Rooms</label>
+            {{ form.total_rooms }}
+        </div>
+
+        <div class="form-row">
+            <label>Gender Type</label>
+            {{ form.gender_type }}
+        </div>
+
+        <div class="form-row">
+            <label>PG Image</label>
+            {{ form.image }}
+        </div>
+
+        <button type="submit" class="btn primary">Update PG</button>
+    </form>
+</div>
+{% endblock %}

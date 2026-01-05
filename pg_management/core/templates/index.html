@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PG Management System</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="index-body">
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>PG Management System</h1>
+        <p>
+            Find the best PGs, manage rooms, and handle bookings — all in one place.
+        </p>
+    </div>
+</section>
+
+<!-- ROLE CARDS -->
+<section class="roles">
+    <div class="role-card">
+        <i class="fa-solid fa-user-shield"></i>
+        <h2>Admin</h2>
+        <p>Manage users, PG owners, and system activity</p>
+        <a href="{% url 'login' 'ADMIN' %}" class="btn primary">Login</a>
+        <a href="{% url 'signup' 'ADMIN' %}" class="btn outline">Signup</a>
+    </div>
+
+    <div class="role-card">
+        <i class="fa-solid fa-building"></i>
+        <h2>PG Owner</h2>
+        <p>Add PGs, manage rooms, and handle bookings</p>
+        <a href="{% url 'login' 'PG_OWNER' %}" class="btn primary">Login</a>
+        <a href="{% url 'signup' 'PG_OWNER' %}" class="btn outline">Signup</a>
+    </div>
+
+    <div class="role-card">
+        <i class="fa-solid fa-bed"></i>
+        <h2>Customer</h2>
+        <p>Search PGs, book rooms, and manage bookings</p>
+        <a href="{% url 'login' 'CUSTOMER' %}" class="btn primary">Login</a>
+        <a href="{% url 'signup' 'CUSTOMER' %}" class="btn outline">Signup</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="index-footer">
+    <p>© 2026 PG Management System. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
