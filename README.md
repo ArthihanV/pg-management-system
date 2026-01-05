@@ -2,6 +2,22 @@
 
 A role-based PG Management System built using Django.
 
+## Screenshots
+
+### Index Page
+![Index Page](screenshots/index.png)
+
+### Admin Dashboard
+![Admin Dashboard](screenshots/admin.png)
+
+### Owner Dashboard
+![Owner Dashboard](screenshots/pg owner.png)
+
+### Customer Search
+![Customer Search](screenshots/customer.png)
+![Booking list] (screenshots/customer1.png)
+
+
 ## Features
 - Admin, PG Owner, Customer roles
 - PG & Room management
