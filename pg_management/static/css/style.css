@@ -193,3 +193,130 @@
     margin-bottom: 15px;
     font-size: 14px;
 }
+/* ================= TABLET VIEW ================= */
+@media (max-width: 1024px) {
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .content {
+        margin-left: 200px;
+        padding: 20px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .roles {
+        padding: 40px 20px;
+    }
+}
+
+/* ================= TABLET VIEW ================= */
+@media (max-width: 1024px) {
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .content {
+        margin-left: 200px;
+        padding: 20px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .roles {
+        padding: 40px 20px;
+    }
+}
+
+/* ================= FORM & BUTTON RESPONSIVE ================= */
+
+input, select, button {
+    max-width: 100%;
+}
+
+.btn {
+    font-size: 14px;
+}
+
+/* ================= MOBILE VIEW ================= */
+@media (max-width: 767px) {
+
+    /* SIDEBAR → TOP BAR */
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 15px;
+    }
+
+    .sidebar .logo {
+        margin-bottom: 15px;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .menu li {
+        margin: 0;
+    }
+
+    .menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .logout {
+        position: relative;
+        bottom: auto;
+        margin-top: 15px;
+    }
+
+    /* CONTENT FULL WIDTH */
+    .content {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    /* DASHBOARD CARDS */
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* TABLES → SCROLL */
+    .table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* AUTH PAGES */
+    .auth-card {
+        padding: 25px 20px;
+    }
+
+    /* INDEX PAGE */
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .roles {
+        grid-template-columns: 1fr;
+        padding: 30px 15px;
+    }
+}
+@media (max-width: 767px) {
+    .menu a span {
+        display: none;
+    }
+}
