@@ -12,12 +12,12 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('logout/', views.logout_view, name='logout'),
 
-    path('admin/approve-pg-owners/', views.admin_approve_pg_owners, name='approve_pg_owners'),
-    path('admin/approve/<int:user_id>/', views.approve_pg_owner, name='approve_pg_owner'),
-    path('admin/reject/<int:user_id>/', views.reject_pg_owner, name='reject_pg_owner'),
-    path('admin/users/', views.admin_users, name='admin_users'),
-    path('admin/bookings/', views.admin_bookings, name='admin_bookings'),    
-    path('admin/users/delete/<int:user_id>/', views.admin_delete_user, name='admin_delete_user'),
+    path('admin/approve-pg-owners/', views.admin_approve_pg_owners, name='approve_pg_owner'),
+    path('admin/approve/<int:user_id>/', views.approve_pg_owner, name='approve_pg_owners'),
+    path('admin/reject/<int:user_id>/', views.reject_pg_owner, name='reject_pg_owners'),
+    path('admin/users/', views.admin_users, name='admin_user'),
+    path('admin/bookings/', views.admin_bookings, name='admin_booking'),    
+    path('admin/users/delete/<int:user_id>/', views.admin_delete_user, name='admin_delete_users'),
     
 
 
