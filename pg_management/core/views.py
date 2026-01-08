@@ -12,6 +12,7 @@ from .models import PG
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.db.models import Sum
+from django.shortcuts import get_object_or_404
 User = get_user_model()
 
 
@@ -116,7 +117,7 @@ def approve_pg_owner(request, user_id):
     if request.user.role != 'ADMIN':
         return redirect('dashboard')
 
-    owner = User.objects.get(id=user_id, role='PG_OWNER')
+    owner = get_object_or_404(User, id=user_id, role='PG_OWNER')
     owner.is_approved = True
     owner.save()
 
@@ -129,7 +130,8 @@ def reject_pg_owner(request, user_id):
     if request.user.role != 'ADMIN':
         return redirect('dashboard')
 
-    User.objects.filter(id=user_id, role='PG_OWNER').delete()
+    owner = get_object_or_404(User, id=user_id, role='PG_OWNER')
+    owner.delete()
     messages.success(request, "PG Owner rejected and deleted")
 
     return redirect('approve_pg_owners')

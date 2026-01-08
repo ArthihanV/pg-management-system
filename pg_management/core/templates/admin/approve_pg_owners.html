@@ -23,8 +23,16 @@
     <tr>
         <td>{{ owner.username }}</td>
         <td>
-            <a href="{% url 'approve_pg_owner' owner.id %}" class="btn">Approve</a>
-            <a href="{% url 'reject_pg_owner' owner.id %}" class="btn danger">Reject</a>
+            <form method="post" action="{% url 'approve_owner' owner.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn success">Approve</button>
+            </form>
+
+            <form method="post" action="{% url 'reject_owner' o.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn danger">Reject</button>
+            </form>
+
         </td>
     </tr>
     {% endfor %}
