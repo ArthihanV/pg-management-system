@@ -25,8 +25,8 @@ def index(request):
 def signup_view(request, role):
     if request.method == 'POST':
         username = request.POST.get('username')
-        password = request.POST.get('password1')
-        confirm_password = request.POST.get('password2')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
 
         # password match check
         if password != confirm_password:
@@ -45,11 +45,12 @@ def signup_view(request, role):
             role=role
         )
 
-        # 🔹 AUTO APPROVAL LOGIC (4.2)
+        user.is_active = True
+
         if role in ['ADMIN', 'CUSTOMER']:
             user.is_approved = True
         else:
-            user.is_approved = False   # PG OWNER
+            user.is_approved = False
 
         user.save()
 
