@@ -245,78 +245,67 @@ input, select, button {
     font-size: 14px;
 }
 
-/* ================= MOBILE VIEW ================= */
+
+/* ================= RESPONSIVE : INDEX / AUTH ================= */
+
+/* TABLET */
+@media (max-width: 1024px) {
+    .container {
+        gap: 20px;
+    }
+
+    h1 {
+        font-size: 30px;
+        text-align: center;
+        position: static;
+        margin-bottom: 20px;
+    }
+}
+
+/* MOBILE */
 @media (max-width: 767px) {
 
-    /* SIDEBAR → TOP BAR */
-    .sidebar {
-        position: relative;
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 26px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* INDEX CARDS */
+    .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .card {
         width: 100%;
-        height: auto;
-        padding: 15px;
-    }
-
-    .sidebar .logo {
-        margin-bottom: 15px;
-    }
-
-    .menu {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .menu li {
-        margin: 0;
-    }
-
-    .menu a {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
-
-    .logout {
-        position: relative;
-        bottom: auto;
-        margin-top: 15px;
-    }
-
-    /* CONTENT FULL WIDTH */
-    .content {
-        margin-left: 0;
-        padding: 15px;
-    }
-
-    /* DASHBOARD CARDS */
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* TABLES → SCROLL */
-    .table {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        white-space: nowrap;
+        padding: 20px;
     }
 
     /* AUTH PAGES */
+    .auth-container {
+        padding: 10px;
+    }
+
     .auth-card {
         padding: 25px 20px;
+        border-radius: 14px;
     }
 
-    /* INDEX PAGE */
-    .hero h1 {
-        font-size: 28px;
+    .form-group {
+        padding: 10px;
     }
 
-    .roles {
-        grid-template-columns: 1fr;
-        padding: 30px 15px;
+    .form-group input {
+        font-size: 14px;
     }
-}
-@media (max-width: 767px) {
-    .menu a span {
-        display: none;
+
+    .btn {
+        font-size: 15px;
+        padding: 12px;
     }
 }
