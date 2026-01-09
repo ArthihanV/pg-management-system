@@ -7,37 +7,29 @@
 <li><a href="{% url 'admin_bookings' %}"><i class="fa-solid fa-calendar-check"></i>Bookings</a></li>
 {% endblock %}
 
-{% block title %}Approve PG Owners{% endblock %}
-
+{% extends 'admin/base.html' %}
 {% block content %}
-<h2>Pending PG Owner Approvals</h2>
+
+<h2>PG Owner Approval</h2>
 
 {% if pending_owners %}
-<table class="table">
-    <tr>
-        <th>Username</th>
-        <th>Action</th>
-    </tr>
+  {% for owner in pending_owners %}
+    <div class="card">
+      <p><strong>{{ owner.username }}</strong></p>
 
-    {% for owner in pending_owners %}
-    <tr>
-        <td>{{ owner.username }}</td>
-        <td>
-            <form method="post" action="{% url 'approve_owner' owner.id %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit" class="btn success">Approve</button>
-            </form>
+      <form method="post" action="{% url 'approve_pg_owner' owner.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn success">Approve</button>
+      </form>
 
-            <form method="post" action="{% url 'reject_owner' o.id %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit" class="btn danger">Reject</button>
-            </form>
-
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+      <form method="post" action="{% url 'reject_pg_owner' owner.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn danger">Reject</button>
+      </form>
+    </div>
+  {% endfor %}
 {% else %}
-<p>No pending PG Owner approvals 🎉</p>
+  <p>No pending PG owner requests.</p>
 {% endif %}
+
 {% endblock %}

@@ -14,8 +14,8 @@ urlpatterns = [
 
     path('panel/users/', views.admin_users, name='admin_users'),
     path('panel/approve-owners/', views.admin_approve_pg_owners, name='approve_pg_owners'),
-    path('panel/approve-owner/<int:user_id>/', views.approve_pg_owner, name='approve_owner'),
-    path('panel/reject-owner/<int:user_id>/', views.reject_pg_owner, name='reject_owner'),
+    path('panel/approve-owner/<int:user_id>/', views.approve_pg_owner, name='approve_pg_owner'),
+    path('panel/reject-owner/<int:user_id>/', views.reject_pg_owner, name='reject_pg_owner'),
     path('bookings/', views.admin_bookings, name='admin_bookings'),    
     path('users/delete/<int:user_id>/', views.admin_delete_user, name='admin_delete_user'),
     
