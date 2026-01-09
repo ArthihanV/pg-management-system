@@ -27,7 +27,7 @@
         <h2>Admin</h2>
         <p>Manage users, PG owners, and system activity</p>
         <a href="{% url 'login' 'ADMIN' %}" class="btn primary">Login</a>
-        <a href="{% url 'signup' 'ADMIN' %}" class="btn outline">Signup</a>
+        {% comment %} <a href="{% url 'signup' 'ADMIN' %}" class="btn outline">Signup</a> {% endcomment %}
     </div>
 
     <div class="role-card">
