@@ -262,50 +262,122 @@ input, select, button {
     }
 }
 
-/* MOBILE */
-@media (max-width: 767px) {
+/* ==================================================
+   COMPLETE MOBILE-FIRST UI (INDEX / LOGIN / SIGNUP)
+   ================================================== */
 
-    body {
-        padding: 10px;
-    }
+/* TABLET VIEW */
+@media (max-width: 1024px) {
 
     h1 {
-        font-size: 26px;
+        position: static;
         text-align: center;
         margin-bottom: 20px;
+        font-size: 30px;
     }
 
-    /* INDEX CARDS */
     .container {
-        flex-direction: column;
         gap: 20px;
     }
 
     .card {
-        width: 100%;
-        padding: 20px;
+        width: 280px;
+    }
+}
+
+
+/* MOBILE VIEW */
+@media (max-width: 767px) {
+
+    /* BODY RESET */
+    body {
+        padding: 10px;
+        align-items: flex-start;
     }
 
-    /* AUTH PAGES */
+    /* PAGE TITLE */
+    h1 {
+        position: static;
+        text-align: center;
+        font-size: 26px;
+        margin: 15px 0 25px;
+        line-height: 1.3;
+    }
+
+    /* INDEX PAGE CARDS */
+    .container {
+        flex-direction: column;
+        gap: 18px;
+        width: 100%;
+    }
+
+    .card {
+        width: 100%;
+        padding: 22px;
+        border-radius: 16px;
+    }
+
+    .card h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    /* BUTTONS */
+    .btn {
+        padding: 14px;
+        font-size: 16px;
+        border-radius: 14px;
+    }
+
+    /* AUTH PAGES (LOGIN / SIGNUP) */
     .auth-container {
+        width: 100%;
         padding: 10px;
     }
 
     .auth-card {
-        padding: 25px 20px;
-        border-radius: 14px;
+        width: 100%;
+        padding: 24px 20px;
+        border-radius: 18px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
 
+    .auth-card h2 {
+        text-align: center;
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    /* FORM INPUTS */
     .form-group {
-        padding: 10px;
+        margin-bottom: 14px;
     }
 
-    .form-group input {
+    .form-group label {
+        font-size: 14px;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 13px;
+        font-size: 15px;
+        border-radius: 12px;
+    }
+
+    /* AUTH BUTTON */
+    .auth-card .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* LINKS (LOGIN ↔ SIGNUP) */
+    .auth-card p {
+        text-align: center;
+        margin-top: 15px;
         font-size: 14px;
     }
-
-    .btn {
-        font-size: 15px;
-        padding: 12px;
-    }
 }
+

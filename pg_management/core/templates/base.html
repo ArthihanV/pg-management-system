@@ -8,8 +8,14 @@
 
 </head>
 <body>
+    <!-- MOBILE HEADER (VISIBLE ONLY ON MOBILE) -->
+    <div class="mobile-header">
+        <h3>PG System</h3>
+        <i class="fa-solid fa-user-circle"></i>
+    </div>
 
-<div class="layout">
+    
+    <div class="layout">
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
@@ -33,6 +39,56 @@
     </main>
 
 </div>
+
+<!-- MOBILE BOTTOM NAV (ROLE BASED) -->
+{% if user.is_authenticated %}
+<div class="mobile-nav">
+
+    {% if user.role == 'ADMIN' %}
+        <a href="{% url 'dashboard' %}">
+            <i class="fa-solid fa-chart-line"></i>
+            Home
+        </a>
+        <a href="{% url 'admin_users' %}">
+            <i class="fa-solid fa-users"></i>
+            Users
+        </a>
+        <a href="{% url 'approve_pg_owners' %}">
+            <i class="fa-solid fa-user-check"></i>
+            Owners
+        </a>
+
+    {% elif user.role == 'PG_OWNER' %}
+        <a href="{% url 'dashboard' %}">
+            <i class="fa-solid fa-gauge-high"></i>
+            Home
+        </a>
+        <a href="{% url 'owner_pg_list' %}">
+            <i class="fa-solid fa-building"></i>
+            PGs
+        </a>
+        <a href="{% url 'owner_bookings' %}">
+            <i class="fa-solid fa-calendar-check"></i>
+            Bookings
+        </a>
+
+    {% elif user.role == 'CUSTOMER' %}
+        <a href="{% url 'dashboard' %}">
+            <i class="fa-solid fa-house"></i>
+            Home
+        </a>
+        <a href="{% url 'customer_pg_list' %}">
+            <i class="fa-solid fa-search"></i>
+            Search
+        </a>
+        <a href="{% url 'customer_bookings' %}">
+            <i class="fa-solid fa-bookmark"></i>
+            Bookings
+        </a>
+    {% endif %}
+
+</div>
+{% endif %}
 
 </body>
 </html>
