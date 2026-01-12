@@ -612,9 +612,7 @@ body {
   }
 
   /* TABLES → CARD STYLE */
-  table {
-    display: none;
-  }
+  
 
   .mobile-list {
     display: flex;
@@ -649,4 +647,65 @@ body {
     font-size: 16px;
     border-radius: 12px;
   }
+}
+
+/* ===== FILTER BAR RESPONSIVE ===== */
+@media (max-width: 767px) {
+    .filter-bar,
+    .filters,
+    .search-bar {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .filter-bar input,
+    .filter-bar select,
+    .search-bar input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+}
+
+/* ===== TABLE → CARD STYLE (MOBILE) ===== */
+@media (max-width: 767px) {
+    table {
+        display: none;
+    }
+
+    .mobile-table {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .mobile-row {
+        background: #fff;
+        padding: 14px;
+        border-radius: 14px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .mobile-row p {
+        margin: 4px 0;
+        font-size: 14px;
+    }
+}
+
+/* ================= PG GRID ================= */
+.pg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* ================= PG GRID MOBILE ================= */
+@media (max-width: 767px) {
+    .pg-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
 }
