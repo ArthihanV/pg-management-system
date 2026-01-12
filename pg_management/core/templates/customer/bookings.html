@@ -73,4 +73,15 @@
         </tbody>
     </table>
 </div>
+
+<div class="mobile-table">
+{% for b in bookings %}
+  <div class="mobile-row">
+    <p><strong>PG:</strong> {{ b.pg.name }}</p>
+    <p><strong>Date:</strong> {{ b.date }}</p>
+    <p><strong>Status:</strong> {{ b.status }}</p>
+  </div>
+{% endfor %}
+</div>
+
 {% endblock %}

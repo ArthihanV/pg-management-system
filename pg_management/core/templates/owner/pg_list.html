@@ -25,7 +25,7 @@
         {% if pg.image %}
         <img src="{{ pg.image.url }}" alt="{{ pg.name }}">
         {% else %}
-        <div class="no-img">No Image</div>
+        <img src="{% static 'images/default-pg.jpg' %}" alt="Default PG Image">
         {% endif %}
 
         <div class="pg-body">

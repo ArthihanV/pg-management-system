@@ -50,7 +50,7 @@
         {% if pg.image %}
         <img src="{{ pg.image.url }}" alt="{{ pg.name }}">
         {% else %}
-        <div class="no-img">No Image</div>
+        <img src="{% static 'images/default_pg.jpg' %}" alt="Default PG Image">
         {% endif %}
 
         <div class="pg-body">
@@ -58,7 +58,7 @@
             <p class="location">{{ pg.location }}</p>
 
             <div class="pg-info">
-                <span>₹ {{ pg.price }}/month</span>
+                <span>₹ {{  pg.price_per_month }}/month</span>
                 <span>{{ pg.gender_type }}</span>
             </div>
 
