@@ -550,4 +550,21 @@ body {
         padding: 14px;
         border-radius: 14px;
     }
+    .mobile-header {
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #374151;
+    }
+
+    .mobile-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .mobile-nav h2 {
+        font-size: 20px;
+    }
+    
+
 }
