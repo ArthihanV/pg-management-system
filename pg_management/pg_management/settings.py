@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # --------------------------------------------------
 SECRET_KEY = 'django-insecure-change-this-key'
 
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['.onrender.com']
