@@ -10,7 +10,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # --------------------------------------------------
 # SECURITY SETTINGS
 # --------------------------------------------------
-SECRET_KEY = 'django-insecure-change-this-key'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'unsafe-dev-key')
+
 
 DEBUG = True
 
